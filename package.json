@@ -1,0 +1,24 @@
+{
+  "name": "ebanat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nw src/",
+    "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@microsoft/office-js": "^1.1.48",
+    "child_process": "^1.0.2",
+    "cloudmersive-convert-api-client": "^2.6.3",
+    "docx2html": "^1.1.0",
+    "mammoth": "^1.4.16",
+    "node-xlsx": "^0.16.1",
+    "nw": "^0.52.1",
+    "nw-builder": "^3.5.7",
+    "xlsx": "^0.16.9"
+  }
+}
