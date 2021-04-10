@@ -1,24 +1,36 @@
 {
-  "name": "ebanat",
+  "name": "node-webkit-fgos-matcher",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
+  "window": {
+    "width": 600,
+    "height": 750,
+    "title": "m-cms edit"
+  },
   "scripts": {
-    "dev": "nw src/",
-    "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/"
+    "start": "nodewebkit",
+    "dev": "nw presentationLayer/",
+    "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ presentationLayer/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@microsoft/office-js": "^1.1.48",
+    "body-parser": "^1.19.0",
     "child_process": "^1.0.2",
     "cloudmersive-convert-api-client": "^2.6.3",
     "docx2html": "^1.1.0",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "jade": "^1.11.0",
     "mammoth": "^1.4.16",
     "node-xlsx": "^0.16.1",
+    "nodewebkit": "^0.11.6",
     "nw": "^0.52.1",
     "nw-builder": "^3.5.7",
+    "pug": "^3.0.2",
     "xlsx": "^0.16.9"
   }
 }
