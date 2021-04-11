@@ -2,14 +2,14 @@
   "name": "node-webkit-fgos-matcher",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "main.js",
   "window": {
     "width": 600,
     "height": 750,
     "title": "m-cms edit"
   },
   "scripts": {
-    "start": "nodewebkit",
+    "start": "electron .",
     "dev": "nw presentationLayer/",
     "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ presentationLayer/"
   },
@@ -22,6 +22,7 @@
     "child_process": "^1.0.2",
     "cloudmersive-convert-api-client": "^2.6.3",
     "docx2html": "^1.1.0",
+    "electron": "^12.0.2",
     "express": "^4.17.1",
     "http": "^0.0.1-security",
     "jade": "^1.11.0",

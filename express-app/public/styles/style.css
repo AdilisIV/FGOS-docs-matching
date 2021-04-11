@@ -1,0 +1,33 @@
+.body-wrapper {
+    margin: auto;
+    width: 85%;
+}
+
+header.brand-logo span {
+    padding: 0 0 0 8px;
+}
+
+.input-item-wrapper {
+    padding: 8px 0 8px 0;
+}
+
+.input-form-wrapper {
+    padding: 15px 0 15px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 220px;
+}
+
+.spacer-20 {
+    display: block;
+    height: 20px;
+    width: 100%;
+}
+
+.spacer-10 {
+    display: block;
+    height: 10px;
+    width: 100%;
+}
