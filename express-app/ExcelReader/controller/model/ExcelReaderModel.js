@@ -2,9 +2,6 @@ const reader = require('xlsx')
 
 
 exports.excelData = function (path, callback) {
-    // db.get().collection('cityevents').find().sort({"start": 1}).limit(1000).toArray(function (err, docs) {
-    //     callback(err, docs);
-    // })
     let excelData = readExcel(path)
     callback(null, excelData)
 };
