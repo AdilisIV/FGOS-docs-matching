@@ -29,7 +29,7 @@ function onCheckBtnClick() {
     wordFilePath = wordField.files[0].path;
     excelFilePath = excelField.files[0].path;
 
-    var requestUri = "http://localhost:8082/verify"
+    var requestUri = "http://localhost:7376/verify"
     
     if (wordFilePath != "") {
         requestUri += `?wordpath=${wordFilePath}`;
@@ -47,7 +47,7 @@ function onCheckBtnClick() {
     isInProgress = true
 
     httpGetAsync(requestUri, function(response) {
-        
+
         stopIndicating()
         isInProgress = false
         console.log(response);

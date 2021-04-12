@@ -17,10 +17,10 @@ function createWindow () {
   })
 
   // mainWindow.webContents.openDevTools()
+  mainWindow.setIcon(path.join(__dirname, '/images/fgos-matcher-logo.jpg'));
 
   // and load the index.html of the app.
   mainWindow.loadFile('./express-app/views/index-page/index.html')
-  // mainWindow.loadURL(`http://localhost:8082/`)
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

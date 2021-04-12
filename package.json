@@ -1,5 +1,5 @@
 {
-  "name": "node-webkit-fgos-matcher",
+  "name": "gos-matcher",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -9,9 +9,7 @@
     "title": "m-cms edit"
   },
   "scripts": {
-    "start": "electron .",
-    "dev": "nw presentationLayer/",
-    "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ presentationLayer/"
+    "start": "electron ."
   },
   "keywords": [],
   "author": "",
@@ -22,12 +20,14 @@
     "cloudmersive-convert-api-client": "^2.6.3",
     "cloudmersive-validate-api-client": "^1.4.1",
     "docx2html": "^1.1.0",
-    "electron": "^12.0.2",
     "express": "^4.17.1",
     "http": "^0.0.1-security",
     "jade": "^1.11.0",
     "mammoth": "^1.4.16",
     "pug": "^3.0.2",
     "xlsx": "^0.16.9"
+  },
+  "devDependencies": {
+    "electron": "^12.0.2"
   }
 }
