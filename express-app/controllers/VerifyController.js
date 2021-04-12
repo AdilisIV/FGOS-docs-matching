@@ -37,12 +37,11 @@ exports.verify = function (req, res) {
                 resultStr = string_helper.replaceAll(resultStr, "'", '"')
 
                 var resultDict = JSON.parse(resultStr);
-                // let excelCategories = readExcel()
 
                 ExcelController.excelData(req.query.excelpath, function (err, excelCategories) {
                     if (err | !excelCategories) {
                         console.log(err);
-                        res.sendStatus(500)
+                        res.send('Не удалось обработать excel файл')
                     }
 
                     var wellDone = true
