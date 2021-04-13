@@ -53,22 +53,25 @@ exports.searchDiscAndCodeInTable = function(htmlTableStr) {
     // }
 
     var result = {}
-    var curDis = transposedMatrix[0][0]
+    // var curDis = transposedMatrix[0][0]
+    var prevDis = transposedMatrix[0][0]
     var curDisCodes = []
 
 
     for(let i = 0; i < transposedMatrix.length; i++) {
 
-        if (transposedMatrix[i][0] == curDis) {
+        if (transposedMatrix[i][0] == prevDis) {
             curDisCodes.push(extractCodeName(transposedMatrix[i][1]))
         } else {
-            result[curDis] = curDisCodes
+            result[prevDis] = curDisCodes
             curDisCodes = []
+            curDisCodes.push(extractCodeName(transposedMatrix[i][1]))
         }
-        curDis = transposedMatrix[i][0]
+        // curDis = transposedMatrix[i][0]
+        prevDis = transposedMatrix[i][0]
     }
 
-    result[curDis] = curDisCodes
+    result[prevDis] = curDisCodes
     return result
 }
 
