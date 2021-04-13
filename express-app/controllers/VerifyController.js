@@ -14,6 +14,7 @@ exports.verify = function (req, res) {
     DocConverterController.convert(req.query.wordpath, function (err, pathToDocx) {
         if (err) {
             res.send(err);
+            return;
         }
 
         mammoth.convertToHtml({ path: pathToDocx })
@@ -35,7 +36,8 @@ exports.verify = function (req, res) {
                 ExcelController.excelData(req.query.excelpath, function (err, excelCategories) {
                     if (err | !excelCategories) {
                         console.log(err);
-                        res.send('Не удалось обработать excel файл')
+                        res.send(err)
+                        return;
                     }
 
                     var wellDone = true
@@ -48,15 +50,15 @@ exports.verify = function (req, res) {
 
                                 if (unmatchedCodes.length > 0) {
                                     wellDone = false
-                                    console.log('В Excel не стоит отметка для:\n', key, ': ', unmatchedCodes);
-                                    verificationResult += `В Excel не стоит отметка для:\n ${key} : ${unmatchedCodes}\n\n`;
+                                    console.log('В Word не стоит отметка для:\n', key, ': ', unmatchedCodes);
+                                    verificationResult += `В Word не стоит отметка для:\n ${key} : ${unmatchedCodes}\n\n`;
                                 }
                             }
                         }
                     }
 
-                    console.log(wellDone == false ? 'ЕСТЬ ОШИБКИ в ЗАПОЛНЕНИИ EXCEL' : 'Компетенции в карте (excel) заполнены верно')
-                    verificationResult += wellDone == false ? 'ЕСТЬ ОШИБКИ в ЗАПОЛНЕНИИ EXCEL' : 'Компетенции в карте (excel) заполнены верно'
+                    console.log(wellDone == false ? 'ЕСТЬ ОШИБКИ в ЗАПОЛНЕНИИ WORD' : 'Программа дисциплин (word) заполнена верно')
+                    verificationResult += wellDone == false ? 'ЕСТЬ ОШИБКИ в ЗАПОЛНЕНИИ WORD' : 'Программа дисциплин (word) заполнена верно'
 
                     res.send(verificationResult);
                 })
@@ -68,12 +70,14 @@ exports.verify = function (req, res) {
 };
 
 
-function match(excelObject, codesArray) {
-    unmatched = codesArray.slice(0)
+function match(excelObject, codesInWord) {
+
+    unmatched = extractKeysFrom(excelObject)
 
     for(let i = 0; i < unmatched.length; i++) {
-        for (const [key, value] of Object.entries(excelObject)) {
-            if (unmatched[i] == key) {
+        for(let j = 0; j < codesInWord.length; j++) {
+
+            if (unmatched[i] == codesInWord[j]) {
                 unmatched.splice(i, 1);
             }
         }
@@ -81,3 +85,15 @@ function match(excelObject, codesArray) {
 
     return unmatched;
 }
+
+function extractKeysFrom(excelObject) {
+    var ans = []
+  
+    for (const [key, value] of Object.entries(excelObject)) {
+      if (key != "__EMPTY" & key != "__EMPTY_1") {
+        ans.push(key);
+      }
+    }
+  
+    return ans;
+  }

@@ -3,12 +3,18 @@ const reader = require('xlsx')
 
 exports.excelData = function (path, callback) {
     let excelData = readExcel(path)
-    callback(null, excelData)
+    if (excelData) {
+        callback(null, excelData)
+    } else {
+        callback("Не удалось прочитать указанный excel файл. Формат файла должен быть .xlsx", null)
+    }
 };
 
 function readExcel(filePath) {
-    // let filePath = './docs/excel/matrix_kompetentsiy.xlsx'
-    // let filePath = '/Users/mac/Documents/fgos-matching/docs/excel/Primer_matritsy_kompetentsiy-2.xlsx' // wrong
+    let fileExt = getFileExtFrom(filePath)
+    if (fileExt != "xlsx") {
+        return null
+    }
 
     let file = reader.readFile(filePath.toString(), {sheetStubs: true})
     let data = []
@@ -25,4 +31,9 @@ function readExcel(filePath) {
     // console.log(data[0]['__EMPTY'])
 
     return data
+}
+
+function getFileExtFrom(fileName) {
+    var ext = fileName.substr(fileName.lastIndexOf('.') + 1);
+    return ext
 }
