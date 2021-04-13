@@ -1,9 +1,9 @@
 var mammoth = require("mammoth");
-const { spawn, spawnSync } = require('child_process');
 var string_helper = require('../public/js/string-helper');
 
 var ExcelController = require('../ExcelReader/controller/ExcelReaderController');
 var DocConverterController = require('../controllers/DocConverterController');
+var htmlHelper = require('../../core/HtmlTableHelper')
 
 
 exports.verify = function (req, res) {
@@ -30,13 +30,7 @@ exports.verify = function (req, res) {
                 let closedTableTagIdx = str.indexOf("</table>", targetTableIdx)
                 str = str.substr(targetTableIdx, closedTableTagIdx - targetTableIdx + "</table>".length);
 
-
-                const pyProg = spawnSync('python3', ['./core/table2dataframe.py', str]);
-                // let resultStr = pyProg.stdout.toString().replaceAll("'", '"');
-                var resultStr = pyProg.stdout.toString()
-                resultStr = string_helper.replaceAll(resultStr, "'", '"')
-
-                var resultDict = JSON.parse(resultStr);
+                var resultDict = htmlHelper.searchDiscAndCodeInTable(str)
 
                 ExcelController.excelData(req.query.excelpath, function (err, excelCategories) {
                     if (err | !excelCategories) {

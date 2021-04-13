@@ -16,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "child_process": "^1.0.2",
+    "cheerio": "^1.0.0-rc.6",
+    "cheerio-tableparser": "^1.0.1",
     "cloudmersive-convert-api-client": "^2.6.3",
     "cloudmersive-validate-api-client": "^1.4.1",
     "docx2html": "^1.1.0",
@@ -25,6 +26,7 @@
     "jade": "^1.11.0",
     "mammoth": "^1.4.16",
     "pug": "^3.0.2",
+    "remove-suffix": "^2.0.0",
     "xlsx": "^0.16.9"
   },
   "devDependencies": {
