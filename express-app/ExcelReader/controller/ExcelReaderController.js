@@ -1,7 +1,13 @@
 var Model = require('./model/ExcelReaderModel');
 
-exports.excelData = function (path, callback) {
-    Model.excelData(path, function(err, data) {
-        callback(err, data)
+exports.excelData = async function (path) {
+    return new Promise((resolve, reject) => {
+        Model.excelData(path, function(err, data) {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(data)
+            }
+        })
     })
 };

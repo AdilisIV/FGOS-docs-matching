@@ -33,6 +33,19 @@ function remove_duplicates(arr) {
 }
 
 
+exports.extractTableStrFrom = function(htmlStr) {
+    var str = htmlStr.toString() + "";
+    let targetIdx = str.indexOf("(индикаторы) по модулю");
+
+    let targetTableIdx = str.indexOf("<table><tr><td>", targetIdx);
+
+    // cut str
+    let closedTableTagIdx = str.indexOf("</table>", targetTableIdx)
+    str = str.substr(targetTableIdx, closedTableTagIdx - targetTableIdx + "</table>".length);
+
+    return str;
+}
+
 exports.searchDiscAndCodeInTable = function(htmlTableStr) {
     $ = cheerio.load(htmlTableStr);
 
