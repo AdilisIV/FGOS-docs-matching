@@ -1,7 +1,7 @@
 {
-  "name": "gos-matcher",
+  "name": "fgosmatcher",
   "version": "1.0.0",
-  "description": "",
+  "description": "student practice app. can match content from fgos doc and fgos excel documents",
   "main": "main.js",
   "window": {
     "width": 600,
@@ -11,8 +11,16 @@
   "scripts": {
     "start": "electron ."
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "fgos",
+    "student",
+    "work",
+    "doc",
+    "excel",
+    "match",
+    "tables"
+  ],
+  "author": "AdilisIV",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
